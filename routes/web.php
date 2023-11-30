@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CursoController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +26,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::controller(CursoController::class)->group(function () {
-        Route::get('cursos', 'index')->name('cursos.index');
-        Route::get('cursos/create', 'create')->name('cursos.create');
-        Route::get('cursos/{curso}', 'show')->name('cursos.show');
+    Route::controller(CourseController::class)->group(function () {
+        Route::get('courses', 'index')->name('courses.index');
+        Route::get('courses/create', 'create')->name('courses.create');
+        Route::get('courses/{course}', 'show')->name('courses.show');
     });
 });
