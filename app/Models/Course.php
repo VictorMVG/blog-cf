@@ -12,5 +12,6 @@ class Course extends Model
     protected $filleable = [
         'name',
         'description',
+        'category',
     ];
 }

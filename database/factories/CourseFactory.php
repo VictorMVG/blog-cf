@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Course;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
@@ -17,7 +18,9 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'description' => $this->faker->paragraph(),
+            'category' => $this->faker->randomElement(['PHP', 'Laravel', 'JavaScript', 'Vue.js', 'React.js']),
         ];
     }
 }
