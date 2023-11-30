@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -58,4 +59,30 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    protected function name(): Attribute
+    {
+        return new Attribute(
+            /* funcion normal
+           set: function($value){
+                return ucwords($value);
+            }
+            */
+            //funciones flecha lo mismo de arriba pero más corto
+            get: fn ($value) => ucwords($value),
+            set: fn ($value) => strtolower($value),
+
+        /*Mutadores y Accesores en versiones antiguas de laravel
+            
+            public function setNameAttribute($value) {
+                $this->attributes['name'] = strtolower($value);
+            }
+
+            public function getNameAttribute($value) {
+                return ucwords($value);
+            }
+            
+            */
+        );
+    }
 }
