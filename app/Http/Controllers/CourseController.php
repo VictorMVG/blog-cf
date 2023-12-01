@@ -12,7 +12,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::paginate();
+        $courses = Course::orderBy('id', 'desc')->paginate();
         return view('courses.index', compact('courses'));
     }
 
@@ -29,16 +29,20 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = new Course();
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $course->category = $request->category;
+        $course->save();
+        return redirect()->route('courses.show', $course);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Course $course)
     {
-        $course = Course::find($id);
-        return view('courses.show', ['course' => $course]);
+        return view('courses.show', compact('course'));
     }
 
     /**
@@ -46,7 +50,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('courses.edit', compact('course'));
     }
 
     /**
@@ -54,7 +58,11 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $course->category = $request->category;
+        $course->save();
+        return redirect()->route('courses.show', $course);
     }
 
     /**

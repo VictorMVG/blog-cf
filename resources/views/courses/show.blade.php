@@ -9,9 +9,11 @@
         
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 dark:bg-gray-800">
             <a href="{{ route('courses.index') }}" class="prose">Volver a la pagina de cursos</a>
+            <a href="{{ route('courses.edit', $course) }}">{{ __('Edit course') }}</a>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 
                 <p>Bienvenido a la página del curso: {{ $course->name }}</p>
+                <p>Descripción: {{ $course->description }}</p>
                 <p>Categoria: {{ $course->category }}</p>
             </div>
         </div>

@@ -263,5 +263,9 @@
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
     "Courses": "Cursos",
     "Create course": "Crear curso",
-    "Course:": "Curso:"
+    "Course:": "Curso:",
+    "Category": "Categoria",
+    "Description": "Descripción:",
+    "Edit course": "Editar curso",
+    "Update": "Actualizar"
 }
