@@ -12,7 +12,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('courses.index');
+        $courses = Course::paginate();
+        return view('courses.index', compact('courses'));
     }
 
     /**
@@ -34,8 +35,9 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Course $course)
+    public function show($id)
     {
+        $course = Course::find($id);
         return view('courses.show', ['course' => $course]);
     }
 

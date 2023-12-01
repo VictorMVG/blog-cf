@@ -6,10 +6,20 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 dark:bg-gray-800">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <p>Bienvenido a la página principal de cursos</p>
-            </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 dark:bg-gray-500 dark:text-white"">
+            <a href="{{ route('courses.create') }}">{{ __('Create course') }}</a>
+        </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 dark:bg-gray-800 dark:text-white">
+            <ul>
+                @foreach ($courses as $course)
+                <li>
+                    <a href="{{ route('courses.show', $course->id) }}">
+                        {{ $course->name }}
+                    </a>
+                </li>
+                @endforeach
+            </ul>
+            {{ $courses->links()  }}
         </div>
     </div>
 </x-app-layout>
