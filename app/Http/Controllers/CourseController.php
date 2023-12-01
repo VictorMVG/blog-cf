@@ -29,6 +29,12 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required', 'max:255', 'min:5'],
+            'description' => ['required', 'max:255', 'min:5'],
+            'category' => ['required', 'max:255', 'min:5']
+        ]);
+
         $course = new Course();
         $course->name = $request->name;
         $course->description = $request->description;
@@ -58,6 +64,11 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        $request->validate([
+            'name' => ['required', 'max:255', 'min:5'],
+            'description' => ['required', 'max:255', 'min:5'],
+            'category' => ['required', 'max:255', 'min:5']
+        ]);
         $course->name = $request->name;
         $course->description = $request->description;
         $course->category = $request->category;
