@@ -26,7 +26,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::controller(CourseController::class)->group(function () {
+        /* Route::controller(CourseController::class)->group(function () {
         Route::get('courses', 'index')->name('courses.index');
         Route::get('courses/create', 'create')->name('courses.create');
         Route::post('courses', 'store')->name('courses.store');
@@ -34,5 +34,10 @@ Route::middleware([
         Route::get('courses/{course}/edit', 'edit')->name('courses.edit');
         Route::put('courses/{course}', 'update')->name('courses.update');
         Route::delete('courses/{course}', 'destroy')->name('courses.destroy');
-    });
+    }); */
+    /*Esta ruta es equivalente a todo lo anterior comentado incluso permitiendo personalizar las url sin que afect el funcionamiento de la aplicación
+    course se refiere al nombre de la variable que defines en el controller para recibir los datos
+    courses se refiere a que le decimos a laravel que al crear las rutas internas para que fucnione la aplicacion reemplace el nombre personalizado 
+    por el que nosotros especifiquemos en este caso courses*/
+    Route::resource('nombrepersonalizado', CourseController::class)->parameters(['nombrepersonalizado' => 'course'])->names('courses');
 });
