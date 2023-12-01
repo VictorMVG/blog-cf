@@ -14,6 +14,12 @@
                     autocomplete="name" />
             </div>
 
+            <div>
+                <x-label for="slug" value="{{ __('Slug') }}" />
+                <x-input id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')"
+                    autocomplete="slug" />
+            </div>
+
             <div class="mt-4">
                 <x-label for="description" value="{{ __('Description') }}" />
                 <textarea id="description"

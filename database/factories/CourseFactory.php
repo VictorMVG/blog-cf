@@ -19,6 +19,7 @@ class CourseFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
             'description' => $this->faker->paragraph(),
             'category' => $this->faker->randomElement(['PHP', 'Laravel', 'JavaScript', 'Vue.js', 'React.js']),
         ];

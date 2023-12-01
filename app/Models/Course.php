@@ -23,6 +23,11 @@ class Course extends Model
     //como no quiero proteger ningun campo y los demas si estan permitidos se deja vacio
     protected $guarded = [];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     protected function name(): Attribute
     {
         return new Attribute(

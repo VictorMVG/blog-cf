@@ -53,8 +53,15 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreCourse $request, Course $course)
+    public function update(Request $request, Course $course)
     {
+        $request->validate([
+            'name' => 'required|max:255|min:5',
+            'slug' => 'required|max:255|min:5|unique:courses,slug,' . $course->id,
+            'description' => 'required|max:255|min:5',
+            'category' => 'required|max:255|min:5'
+        ]); 
+
         $course->update($request->all());
         return redirect()->route('courses.show', $course);
     }
