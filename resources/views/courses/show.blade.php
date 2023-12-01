@@ -15,6 +15,12 @@
                 <p>Bienvenido a la página del curso: {{ $course->name }}</p>
                 <p>Descripción: {{ $course->description }}</p>
                 <p>Categoria: {{ $course->category }}</p>
+                <form method="POST" action="{{ route('courses.destroy', $course) }}">
+                    @csrf @method('DELETE')
+                    <x-button class="ms-4">
+                        {{ __('Delete') }}
+                    </x-button>
+                </form>
             </div>
         </div>
     </div>
