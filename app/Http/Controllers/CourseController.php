@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCourse;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -27,13 +28,8 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCourse $request)
     {
-        $request->validate([
-            'name' => ['required', 'max:255', 'min:5'],
-            'description' => ['required', 'max:255', 'min:5'],
-            'category' => ['required', 'max:255', 'min:5']
-        ]);
 
         $course = new Course();
         $course->name = $request->name;
@@ -62,13 +58,8 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Course $course)
+    public function update(StoreCourse $request, Course $course)
     {
-        $request->validate([
-            'name' => ['required', 'max:255', 'min:5'],
-            'description' => ['required', 'max:255', 'min:5'],
-            'category' => ['required', 'max:255', 'min:5']
-        ]);
         $course->name = $request->name;
         $course->description = $request->description;
         $course->category = $request->category;
