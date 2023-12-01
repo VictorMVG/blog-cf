@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
+use App\Mail\ContactusMailable;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +42,10 @@ Route::middleware([
     courses se refiere a que le decimos a laravel que al crear las rutas internas para que fucnione la aplicacion reemplace el nombre personalizado 
     por el que nosotros especifiquemos en este caso courses*/
     Route::resource('nombrepersonalizado', CourseController::class)->parameters(['nombrepersonalizado' => 'course'])->names('courses');
+
+    Route::get('contactus', function () {
+        $email = new ContactusMailable;
+        Mail::to('servicios163@gmail.com')->send($email);
+        return "Mensaje enviado.";
+  })->name('contactus.index');
 });
