@@ -7,7 +7,7 @@
 
     <x-form-card>
         @if (session('info'))
-            <x-banner class="mt-4" type="success" :message="session('info')" />   
+            <x-banner-form class="mt-4" type="success" :message="session('info')" />   
         @endif
         <x-validation-errors class="mb-4" />
         <form method="POST" action="{{ route('contactus.store') }}">
