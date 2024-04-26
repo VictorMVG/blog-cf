@@ -16,7 +16,9 @@ use App\Http\Controllers\CourseController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
+Route::get('contactus', [ContactController::class, 'index'])->name('contactus.index');
+Route::post('contactus', [ContactController::class, 'store'])->name('contactus.store');
 
 Route::middleware([
     'auth:sanctum',
@@ -41,7 +43,4 @@ Route::middleware([
     courses se refiere a que le decimos a laravel que al crear las rutas internas para que fucnione la aplicacion reemplace el nombre personalizado 
     por el que nosotros especifiquemos en este caso courses*/
     Route::resource('nombrepersonalizado', CourseController::class)->parameters(['nombrepersonalizado' => 'course'])->names('courses');
-
-    Route::get('contactus', [ContactController::class, 'index'])->name('contactus.index');
-    Route::post('contactus', [ContactController::class, 'store'])->name('contactus.store');
 });
